@@ -1,13 +1,13 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-02 12:40:51
+ * @LastEditTime: 2022-04-02 13:19:37
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
  */
 package queue
 
-import "stl-go/dequeue"
+import "gitee.com/NorthCityChen/stl-go/dequeue"
 
 type Number interface {
 	int | int64 | float32 | float64

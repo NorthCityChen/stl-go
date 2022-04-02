@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-01 20:54:04
+ * @LastEditTime: 2022-04-02 13:19:50
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -8,8 +8,9 @@
 package math_test
 
 import (
-	"stl-go/math"
 	"testing"
+
+	"gitee.com/NorthCityChen/stl-go/math"
 )
 
 func TestMin(t *testing.T) {

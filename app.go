@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-02 12:42:40
+ * @LastEditTime: 2022-04-02 13:19:42
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -9,7 +9,8 @@ package main
 
 import (
 	"fmt"
-	"stl-go/dequeue"
+
+	"gitee.com/NorthCityChen/stl-go/dequeue"
 )
 
 func main() {
