@@ -1,49 +1,46 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-01 21:35:59
+ * @LastEditTime: 2022-04-02 12:39:53
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
  */
 package stack
 
+import "stl-go/dequeue"
+
 type Number interface {
 	int | int64 | float32 | float64
 }
 
-type Stack[T Number] struct {
-	size T
-	top  *stackItem[T]
+type stack[T Number] struct {
+	content *dequeue.Dequeue[T]
 }
 
-type stackItem[T Number] struct {
-	Val  T
-	Next *stackItem[T]
+func Init[T Number]() *stack[T] {
+	return &stack[T]{content: dequeue.Init[T]()}
 }
 
-func Init[T Number]() Stack[T] {
-	return Stack[T]{size: 0, top: nil}
+func (s *stack[T]) IsEmpty() bool {
+	return s.content.IsEmpty()
 }
 
-func (s *Stack[T]) IsEmpty() bool { return s.size == 0 }
-
-func (s *Stack[T]) Push(val T) bool {
-	newNode := stackItem[T]{Val: val, Next: s.top}
-	s.size++
-	s.top = &newNode
-	return true
+func (s *stack[T]) Size() int {
+	return s.content.Size()
 }
 
-func (s *Stack[T]) GetTop() T {
-	return s.top.Val
+func (s *stack[T]) Push(val T) bool {
+	return s.content.LPush(val)
 }
 
-func (s *Stack[T]) Pop() (T, bool) {
-	if s.IsEmpty() {
-		return 0, false
-	}
-	retVal := s.top.Val
-	s.size--
-	s.top = s.top.Next
-	return retVal, true
+func (s *stack[T]) Pop() (T, bool) {
+	return s.content.LPop()
+}
+
+func (s *stack[T]) Top() (T, bool) {
+	return s.content.LNode()
+}
+
+func (s *stack[T]) Clear() bool {
+	return s.content.Clear()
 }

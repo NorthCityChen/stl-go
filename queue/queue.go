@@ -1,50 +1,47 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-01 21:46:15
+ * @LastEditTime: 2022-04-02 12:40:51
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
  */
 package queue
 
+import "stl-go/dequeue"
+
 type Number interface {
 	int | int64 | float32 | float64
 }
 
-type Queue[T Number] struct {
-	size  int
-	front *QueueNode[T]
-	end   *QueueNode[T]
+// queue: Based on dequeue
+type queue[T Number] struct {
+	content *dequeue.Dequeue[T]
 }
 
-type QueueNode[T Number] struct {
-	Val  T
-	Next *QueueNode[T]
+func Init[T Number]() *queue[T] {
+	return &queue[T]{content: dequeue.Init[T]()}
 }
 
-func Init[T Number]() Queue[T] {
-	return Queue[T]{size: 0, front: nil, end: nil}
+func (q *queue[T]) Push(val T) bool {
+	return q.content.RPush(val)
 }
 
-func (q *Queue[T]) IsEmpty() bool {
-	return q.size == 0
+func (q *queue[T]) Pop() (T, bool) {
+	return q.content.LPop()
 }
 
-func (q *Queue[T]) Push(val T) bool {
-	newNode := QueueNode[T]{Val: val, Next: nil}
-	q.size++
-	q.end.Next = &newNode
-	q.end = &newNode
-	return true
+func (q *queue[T]) IsEmpty() bool {
+	return q.content.IsEmpty()
 }
 
-func (q *Queue[T]) GetFront() T { return q.front.Val }
+func (q *queue[T]) Size() int {
+	return q.Size()
+}
 
-func (q *Queue[T]) Pop() (T, bool) {
-	if q.IsEmpty() {
-		return 0, false
-	}
-	retVal := q.front.Val
-	q.front = q.front.Next
-	return retVal, true
+func (q *queue[T]) Clear() bool {
+	return q.content.Clear()
+}
+
+func (q *queue[T]) Front() (T, bool) {
+	return q.content.LNode()
 }
