@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-02 13:19:42
+ * @LastEditTime: 2022-04-03 09:31:39
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -9,29 +9,13 @@ package main
 
 import (
 	"fmt"
-
-	"gitee.com/NorthCityChen/stl-go/dequeue"
+	"math"
 )
 
 func main() {
-	q := dequeue.Init[int]()
-	q.LPush(12)
-	q.LPush(23)
-	q.LPush(34)
-	q.Clear()
-	q.LPush(34)
-	q.RPush(44)
-	fmt.Println(q.LPop())
-	fmt.Println(q.LPop())
-	fmt.Println(q.LPop())
-	fmt.Println(q.LPop())
-	// q := queue.Init[int]()
-	// q.Push(12)
-	// q.Push(23)
-	// q.Push(44)
-	// // q.IsEmpty()
-	// fmt.Println(q.Pop())
-	// fmt.Println(q.Pop())
-	// fmt.Println(q.Pop())
-	// fmt.Println(q.Pop())
+	// ans := math.Exp2(0)
+	ans := math.Sqrt(-8)
+	// ans2 := math1.Sqrt(-8)
+	fmt.Println(ans)
+	// fmt.Println(ans2)
 }
