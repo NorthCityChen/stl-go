@@ -12,7 +12,7 @@ import (
 
 	"fmt"
 
-	"gitee.com/NorthCityChen/stl-go/randoom"
+	"gitee.com/NorthCityChen/stl-go/random"
 )
 
 func main() {
@@ -27,9 +27,9 @@ func main() {
 	// random.RandStringBytesMaskImprSrcSB(5)
 	// fmt.Println(r)
 	// ret := randoom.RandStr(45)
-	fmt.Println(randoom.RandStr(45))
-	fmt.Println(randoom.RandStr(45))
-	fmt.Println(randoom.RandStr(45))
-	fmt.Println(randoom.RandStr(45))
-	fmt.Println(randoom.RandStr(45))
+	fmt.Println(random.RandStr(45))
+	fmt.Println(random.RandStr(45))
+	fmt.Println(random.RandStr(45))
+	fmt.Println(random.RandStr(45))
+	fmt.Println(random.RandStr(45))
 }

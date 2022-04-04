@@ -1,11 +1,11 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-04 16:10:11
+ * @LastEditTime: 2022-04-04 16:11:37
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
  */
-package randoom
+package random
 
 import (
 	"math/rand"
