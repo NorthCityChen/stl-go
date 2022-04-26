@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-04 16:09:13
+ * @LastEditTime: 2022-04-26 14:25:09
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -8,28 +8,24 @@
 package main
 
 import (
-	// "githuh"
-
 	"fmt"
 
-	"gitee.com/NorthCityChen/stl-go/random"
+	"gitee.com/NorthCityChen/stl-go/heap"
 )
 
+var a = []int{1, 2, 65, 4, 5}
+
 func main() {
-	// // ans := math.Exp2(0)
-	// ans := math.Sqrt(-8)
-	// // ans2 := math1.Sqrt(-8)
-	// fmt.Println(ans)
-	// // fmt.Println(ans2)
-	// string
-	// queue
-	// queue
-	// random.RandStringBytesMaskImprSrcSB(5)
-	// fmt.Println(r)
-	// ret := randoom.RandStr(45)
-	fmt.Println(random.RandStr(45))
-	fmt.Println(random.RandStr(45))
-	fmt.Println(random.RandStr(45))
-	fmt.Println(random.RandStr(45))
-	fmt.Println(random.RandStr(45))
+	h := heap.Init(a, false)
+	fmt.Println(h)
+	h.Push(77)
+	fmt.Println(h)
+	fmt.Println(h.Top())
+	fmt.Println(h.Pop())
+	fmt.Println(h.Pop())
+	fmt.Println(h.Pop())
+	fmt.Println(h.Pop())
+	fmt.Println(h.Pop())
+	fmt.Println(h.Pop())
+	fmt.Println(h.Pop())
 }

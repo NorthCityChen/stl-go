@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-02 12:39:15
+ * @LastEditTime: 2022-04-17 12:04:32
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -8,7 +8,7 @@
 package dequeue
 
 type Number interface {
-	int | int64 | float32 | float64
+	int | int64 | float32 | float64 | string
 }
 
 // dequeue: Based on Double Linked List
@@ -50,7 +50,7 @@ func (q *Dequeue[T]) LPush(val T) bool {
 
 func (q *Dequeue[T]) LPop() (T, bool) {
 	if q.IsEmpty() {
-		return 0, false
+		return T(rune(0)), false
 	}
 	val := q.leftHead.Val
 	q.leftHead = q.leftHead.RPointer
@@ -72,7 +72,7 @@ func (q *Dequeue[T]) RPush(val T) bool {
 
 func (q *Dequeue[T]) RPop() (T, bool) {
 	if q.IsEmpty() {
-		return 0, false
+		return T(rune(0)), false
 	}
 	val := q.rightHead.Val
 	q.rightHead = q.rightHead.LPointer
@@ -82,14 +82,14 @@ func (q *Dequeue[T]) RPop() (T, bool) {
 
 func (q *Dequeue[T]) LNode() (T, bool) {
 	if q.IsEmpty() {
-		return 0, false
+		return T(rune(0)), false
 	}
 	return q.leftHead.Val, true
 }
 
 func (q *Dequeue[T]) RNode() (T, bool) {
 	if q.IsEmpty() {
-		return 0, false
+		return T(rune(0)), false
 	}
 	return q.rightHead.Val, true
 }
