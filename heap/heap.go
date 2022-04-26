@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-26 14:24:36
+ * @LastEditTime: 2022-04-26 15:55:32
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -14,52 +14,37 @@ type Number interface {
 type Heap[T Number] struct {
 	array []T
 	len   int
-	isMax bool
+	cmp   func(T, T) bool
 }
 
 func (h *Heap[T]) up(x int) {
-	if h.isMax {
-		for x > 1 && h.array[x] > h.array[x/2] {
-			h.array[x], h.array[x/2] = h.array[x/2], h.array[x]
-			x /= 2
-		}
-	} else {
-		for x > 1 && h.array[x] < h.array[x/2] {
-			h.array[x], h.array[x/2] = h.array[x/2], h.array[x]
-			x /= 2
-		}
+	// if h.isMax {
+
+	for x > 1 && h.cmp(h.array[x], h.array[x/2]) {
+		h.array[x], h.array[x/2] = h.array[x/2], h.array[x]
+		x /= 2
 	}
+	// } else {
+	// for x > 1 && h.array[x] < h.array[x/2] {
+	// 	h.array[x], h.array[x/2] = h.array[x/2], h.array[x]
+	// 	x /= 2
+	// }
+	// }
 
 }
 
 func (h *Heap[T]) down(x int) {
-	// fmt.Println(h.len)
-	if h.isMax {
-		for x*2 <= h.len {
-			t := x * 2
-			if t+1 <= h.len && h.array[t+1] > h.array[t] {
-				t++
-			}
-			if h.array[t] <= h.array[x] {
-				break
-			}
-			h.array[x], h.array[t] = h.array[t], h.array[x]
-			x = t
+	for x*2 <= h.len {
+		t := x * 2
+		if t+1 <= h.len && h.cmp(h.array[t+1], h.array[t]) {
+			t++
 		}
-	} else {
-		for x*2 <= h.len {
-			t := x * 2
-			if t+1 <= h.len && h.array[t+1] > h.array[t] {
-				t++
-			}
-			if h.array[t] >= h.array[x] {
-				break
-			}
-			h.array[x], h.array[t] = h.array[t], h.array[x]
-			x = t
+		if !h.cmp(h.array[t], h.array[x]) {
+			break
 		}
+		h.array[x], h.array[t] = h.array[t], h.array[x]
+		x = t
 	}
-
 }
 
 func (h *Heap[T]) Push(v T) {
@@ -76,6 +61,7 @@ func (h *Heap[T]) Pop() T {
 	h.array[1], h.array[h.len] = h.array[h.len], h.array[1]
 	h.array = h.array[:h.len]
 	h.len--
+	// fmt.Println(h)
 	h.down(1)
 
 	return ret
@@ -85,14 +71,17 @@ func (h *Heap[T]) Top() T {
 	return h.array[1]
 }
 
-func Init[T Number](array []T, isMax bool) Heap[T] {
+func Init[T Number](array []T, cmp func(T, T) bool) Heap[T] {
 	h := Heap[T]{
 		array: append([]T{0}, array...),
 		len:   len(array),
-		isMax: isMax,
+		cmp:   cmp,
 	}
-	for i := len(h.array) - 1; i >= 1; i-- {
+	for i := h.len; i >= 1; i-- {
 		h.down(i)
 	}
+	// for i := 1; i <= h.len; i++ {
+	// 	h.up(i)
+	// }
 	return h
 }
