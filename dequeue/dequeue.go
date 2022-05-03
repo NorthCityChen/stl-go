@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-17 12:04:32
+ * @LastEditTime: 2022-04-27 13:31:14
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -23,6 +23,9 @@ type dequeueNode[T Number] struct {
 	LPointer *dequeueNode[T]
 	RPointer *dequeueNode[T]
 }
+
+// 返回对应类型的零值 对比 T(Rune(0))在获取空字符串的情况下快14倍左右
+func zeroValue[T Number]() (value T) { return }
 
 func Init[T Number]() *Dequeue[T] {
 	return &Dequeue[T]{size: 0, leftHead: new(dequeueNode[T]), rightHead: new(dequeueNode[T])}
@@ -50,7 +53,7 @@ func (q *Dequeue[T]) LPush(val T) bool {
 
 func (q *Dequeue[T]) LPop() (T, bool) {
 	if q.IsEmpty() {
-		return T(rune(0)), false
+		return zeroValue[T](), false
 	}
 	val := q.leftHead.Val
 	q.leftHead = q.leftHead.RPointer
@@ -72,7 +75,7 @@ func (q *Dequeue[T]) RPush(val T) bool {
 
 func (q *Dequeue[T]) RPop() (T, bool) {
 	if q.IsEmpty() {
-		return T(rune(0)), false
+		return zeroValue[T](), false
 	}
 	val := q.rightHead.Val
 	q.rightHead = q.rightHead.LPointer
@@ -82,14 +85,14 @@ func (q *Dequeue[T]) RPop() (T, bool) {
 
 func (q *Dequeue[T]) LNode() (T, bool) {
 	if q.IsEmpty() {
-		return T(rune(0)), false
+		return zeroValue[T](), false
 	}
 	return q.leftHead.Val, true
 }
 
 func (q *Dequeue[T]) RNode() (T, bool) {
 	if q.IsEmpty() {
-		return T(rune(0)), false
+		return zeroValue[T](), false
 	}
 	return q.rightHead.Val, true
 }

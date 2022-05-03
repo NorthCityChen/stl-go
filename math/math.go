@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-03 09:32:48
+ * @LastEditTime: 2022-05-03 18:50:22
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -76,4 +76,22 @@ func Sqrt(x float64) float64 {
 		res = (res + x/res) / 2
 	}
 	return res
+}
+
+// 排列数： A(3,1)=3
+func A(n, m int) int {
+	res := 1
+	for i := m; i >= 1; i-- {
+		res *= n //n × n-1 × n-2 × ... n-m，m就是需要减1的次数
+		n--
+	}
+	return res
+}
+
+// 组合数：C(3, 2)=3
+func C(n, m int) int {
+	if m == 0 {
+		return 1
+	}
+	return C(n-1, m-1) * (n / m)
 }
