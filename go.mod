@@ -1,3 +1,3 @@
-module gitee.com/NorthCityChen/stl-go
+module github.com/NorthCityChen/stl-go
 
 go 1.18

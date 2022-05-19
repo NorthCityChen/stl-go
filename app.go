@@ -1,6 +1,6 @@
 /*
  * @Author: NorthCity1984
- * @LastEditTime: 2022-05-03 18:51:46
+ * @LastEditTime: 2022-05-19 22:40:47
  * @Description:
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -10,7 +10,7 @@ package main
 import (
 	"fmt"
 
-	"gitee.com/NorthCityChen/stl-go/math"
+	"github.com/NorthCityChen/stl-go/math"
 )
 
 var a = []int{1, 2, 65, 4, 33, 5}

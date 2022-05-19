@@ -1,6 +1,6 @@
 <!--
  * @Author: NorthCity1984
- * @LastEditTime: 2022-04-02 14:30:28
+ * @LastEditTime: 2022-05-19 22:40:31
  * @Description: 
  * @Website: https://grimoire.cn
  * Copyright (c) NorthCity1984 All rights reserved.
@@ -19,7 +19,7 @@ package main
 import (
 	"fmt"
 
-	"gitee.com/NorthCityChen/stl-go/dequeue"
+	"github.com/NorthCityChen/stl-go/dequeue"
 )
 
 func main() {
@@ -43,7 +43,7 @@ func main() {
 import (
 	"fmt"
 
-	"gitee.com/NorthCityChen/stl-go/queue"
+	"github.com/NorthCityChen/stl-go/queue"
 )
 
 func main() {
@@ -65,7 +65,7 @@ func main() {
 - [x] 队列
 - [x] 栈
 - [x] 数学
-- [ ] 优先队列
+- [x] 优先队列
 - [ ] 红黑树
 - [ ] 集合
 - [ ] 二分查找
